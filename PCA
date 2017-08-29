@@ -1,0 +1,58 @@
+Step 1: 
+Step 2:
+
+
+
+
+
+Step 6: Remove het outliers 
+#We found no outliers using R Script and Dr. Wheeler said to skip this step because in an admixed population, the bell curve of the histogram will always have a  gap
+
+
+Step 6a:
+jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1 --bmerge /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bed /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bim /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.fam --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_4/QC6a
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_4/QC6a.log.
+Options in effect:
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1
+  --bmerge /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bed /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bim /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.fam
+  --make-bed
+  --out /home/jennifer/ElasticNet/PCA/PCA_4/QC6a
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1184 people loaded from /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1.fam.
+391 people to be merged from
+/home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.fam.
+Of these, 0 are new, while 391 are present in the base dataset.
+Warning: Multiple positions seen for variant 'rs2185539'.
+Warning: Multiple positions seen for variant 'rs11240767'.
+Warning: Multiple positions seen for variant 'rs12564807'.
+367474 markers loaded from /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1.bim.
+1447224 markers to be merged from
+/home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bim.
+Of these, 1109444 are new, while 337780 are present in the base dataset.
+337708 more multiple-position warnings: see log file.
+Warning: Variants 'rs7555212' and 'AFFX-SNP_6564577__rs7555212' have the same
+position.
+Warning: Variants 'rs10915322' and 'AFFX-SNP_6869948__rs10915322' have the same
+position.
+Warning: Variants 'rs9439505' and 'AFFX-SNP_4600__rs9439505' have the same
+position.
+2170 more same-position warnings: see log file.
+Performing single-pass merge (1184 people, 1476918 variants).
+Merged fileset written to /home/jennifer/ElasticNet/PCA/PCA_4/QC6a-merge.bed +
+/home/jennifer/ElasticNet/PCA/PCA_4/QC6a-merge.bim +
+/home/jennifer/ElasticNet/PCA/PCA_4/QC6a-merge.fam .
+1476918 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.465332.
+1476918 variants and 1184 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to /home/jennifer/ElasticNet/PCA/PCA_4/QC6a.bed +
+/home/jennifer/ElasticNet/PCA/PCA_4/QC6a.bim +
+/home/jennifer/ElasticNet/PCA/PCA_4/QC6a.fam ... done.
+
