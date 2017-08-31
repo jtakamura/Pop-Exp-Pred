@@ -1,34 +1,246 @@
 Step 1: 
+jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/Original/hapmap3_r2_b36_fwd.consensus.qc.poly --missing --out /home/jennifer/ElasticNet/PCA/PCA_5/QC
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC.log.
+Options in effect:
+  --bfile /home/jennifer/ElasticNet/PCA/Original/hapmap3_r2_b36_fwd.consensus.qc.poly
+  --missing
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1440616 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Warning: 6299 het. haploid genotypes present (see
+/home/jennifer/ElasticNet/PCA/PCA_5/QC.hh ); many commands treat these as
+missing.
+Total genotyping rate is 0.997621.
+--missing: Sample missing data report written to
+/home/jennifer/ElasticNet/PCA/PCA_5/QC.imiss, and variant-based missing data
+report written to /home/jennifer/ElasticNet/PCA/PCA_5/QC.lmiss.
+
 Step 2:
+jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/Original/hapmap3_r2_b36_fwd.consensus.qc.poly --geno 0.01 --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_5/QC2
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC2.log.
+Options in effect:
+  --bfile /home/jennifer/ElasticNet/PCA/Original/hapmap3_r2_b36_fwd.consensus.qc.poly
+  --geno 0.01
+  --make-bed
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC2
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1440616 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Warning: 6299 het. haploid genotypes present (see
+/home/jennifer/ElasticNet/PCA/PCA_5/QC2.hh ); many commands treat these as
+missing.
+Total genotyping rate is 0.997621.
+67206 variants removed due to missing genotype data (--geno).
+1373410 variants and 1184 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to /home/jennifer/ElasticNet/PCA/PCA_5/QC2.bed +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC2.bim +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC2.fam ... done.
+
+a) jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2  --autosome --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_5/QC2a
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC2a.log.
+Options in effect:
+  --autosome
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2
+  --make-bed
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC2a
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1330072 out of 1373410 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.998242.
+1330072 variants and 1184 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to /home/jennifer/ElasticNet/PCA/PCA_5/QC2a.bed +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC2a.bim +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC2a.fam ... done.
+
+==> QC2a.bim <==
+22	rs11705587	0	49528105	A	C
+22	rs13056621	0	49528625	A	G
+22	rs7284680	0	49531259	A	G
+22	rs6009963	0	49532118	C	T
+22	rs28420908	0	49535148	A	G
+22	rs6010077	0	49540311	A	G
+22	rs9628249	0	49552813	A	G
+22	rs3888396	0	49558258	C	T
+22	rs2238837	0	49559741	C	A
+22	rs28729663	0	49565872	A	G
+
+==> QC2.bim <==
+26	rs2853508	0	15327	A	G
+26	rs2853509	0	15432	A	G
+26	rs3088309	0	15453	A	C
+26	rs3134743	0	15509	T	C
+26	rs28357372	0	15608	G	A
+26	rs28357373	0	15630	C	T
+26	rs28357375	0	15785	C	T
+26	rs28357376	0	15825	G	A
+26	rs2853510	0	15925	G	A
+26	rs2854125	0	16149	T	C
+
+Step 3: 
+jennifer@wheelerlab1:~/ElasticNet/PCA/PCA_5$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a --missing --out /home/jennifer/ElasticNet/PCA/PCA_5/QC3
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC3.log.
+Options in effect:
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a
+  --missing
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC3
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1330072 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.998242.
+--missing: Sample missing data report written to
+/home/jennifer/ElasticNet/PCA/PCA_5/QC3.imiss, and variant-based missing data
+report written to /home/jennifer/ElasticNet/PCA/PCA_5/QC3.lmiss.
+
+Step 4: Calculate HWE, but not needed for PCA only if examining QC
+
+Step 5:
+
+a)jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a --indep-pairwise 50 5 0.3 --out /home/jennifer/ElasticNet/PCA/PCA_5/QC5a
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.log.
+Options in effect:
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a
+  --indep-pairwise 50 5 0.3
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC5a
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1330072 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.998242.
+1330072 variants and 1184 people pass filters and QC.
+Note: No phenotypes present.
+Pruned 81262 variants from chromosome 1, leaving 30609.
+Pruned 82673 variants from chromosome 2, leaving 28949.
+Pruned 68122 variants from chromosome 3, leaving 24430.
+Pruned 59704 variants from chromosome 4, leaving 22141.
+Pruned 61727 variants from chromosome 5, leaving 22576.
+Pruned 64594 variants from chromosome 6, leaving 22978.
+Pruned 52486 variants from chromosome 7, leaving 19664.
+Pruned 53125 variants from chromosome 8, leaving 19067.
+Pruned 44188 variants from chromosome 9, leaving 16710.
+Pruned 51878 variants from chromosome 10, leaving 18998.
+Pruned 50170 variants from chromosome 11, leaving 17986.
+Pruned 46921 variants from chromosome 12, leaving 18167.
+Pruned 36122 variants from chromosome 13, leaving 13638.
+Pruned 31199 variants from chromosome 14, leaving 12337.
+Pruned 28726 variants from chromosome 15, leaving 11926.
+Pruned 29977 variants from chromosome 16, leaving 13046.
+Pruned 25121 variants from chromosome 17, leaving 11929.
+Pruned 27761 variants from chromosome 18, leaving 11380.
+Pruned 16345 variants from chromosome 19, leaving 8723.
+Pruned 24689 variants from chromosome 20, leaving 10318.
+Pruned 12878 variants from chromosome 21, leaving 5539.
+Pruned 12930 variants from chromosome 22, leaving 6363.
+Pruning complete.  962598 of 1330072 variants removed.
+Marker lists written to /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in and
+/home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.out .
+
+b)jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a -extract /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in --genome -out /home/jennifer/ElasticNet/PCA/PCA_5QC5b
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5QC5b.log.
+Options in effect:
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a
+  --extract /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in
+  --genome
+  --out /home/jennifer/ElasticNet/PCA/PCA_5QC5b
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1330072 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+--extract: 367474 variants remaining.
+Using up to 11 threads (change this with --threads).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.998226.
+367474 variants and 1184 people pass filters and QC.
+Note: No phenotypes present.
+IBD calculations complete.  
+Finished writing /home/jennifer/ElasticNet/PCA/PCA_5QC5b.genome .
+
+b)jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a --extract /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1.log.
+Options in effect:
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a
+  --extract /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in
+  --make-bed
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1330072 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+--extract: 367474 variants remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.998226.
+367474 variants and 1184 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1.bed +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC5b1.bim +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC5b1.fam ... done.
+ #Do not use rel-cuttoff because it removed too many individuals
+ 
 
 
 
-
-
-Step 6: Remove het outliers 
+c)Remove het outliers 
 #We found no outliers using R Script and Dr. Wheeler said to skip this step because in an admixed population, the bell curve of the histogram will always have a  gap
 
 
 Step 6a:
-jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1 --bmerge /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bed /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bim /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.fam --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_4/QC6a
+jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1 --bmerge /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bed /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bim /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.fam --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_5/QC6a
 PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
 (C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to /home/jennifer/ElasticNet/PCA/PCA_4/QC6a.log.
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC6a.log.
 Options in effect:
-  --bfile /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1
   --bmerge /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bed /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bim /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.fam
   --make-bed
-  --out /home/jennifer/ElasticNet/PCA/PCA_4/QC6a
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC6a
 
 64070 MB RAM detected; reserving 32035 MB for main workspace.
-1184 people loaded from /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1.fam.
+1184 people loaded from /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1.fam.
 391 people to be merged from
 /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.fam.
 Of these, 0 are new, while 391 are present in the base dataset.
 Warning: Multiple positions seen for variant 'rs2185539'.
 Warning: Multiple positions seen for variant 'rs11240767'.
 Warning: Multiple positions seen for variant 'rs12564807'.
-367474 markers loaded from /home/jennifer/ElasticNet/PCA/PCA_4/QC5b1.bim.
+367474 markers loaded from /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1.bim.
 1447224 markers to be merged from
 /home/wheelerlab1/Data/HAPMAP3_hg19/HM3_ASN_CEU_YRI_Unrelated_hg19_noAmbig.bim.
 Of these, 1109444 are new, while 337780 are present in the base dataset.
@@ -41,9 +253,9 @@ Warning: Variants 'rs9439505' and 'AFFX-SNP_4600__rs9439505' have the same
 position.
 2170 more same-position warnings: see log file.
 Performing single-pass merge (1184 people, 1476918 variants).
-Merged fileset written to /home/jennifer/ElasticNet/PCA/PCA_4/QC6a-merge.bed +
-/home/jennifer/ElasticNet/PCA/PCA_4/QC6a-merge.bim +
-/home/jennifer/ElasticNet/PCA/PCA_4/QC6a-merge.fam .
+Merged fileset written to /home/jennifer/ElasticNet/PCA/PCA_5/QC6a-merge.bed +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC6a-merge.bim +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC6a-merge.fam .
 1476918 variants loaded from .bim file.
 1184 people (589 males, 595 females) loaded from .fam.
 Using 1 thread (no multithreaded calculations invoked).
@@ -52,7 +264,85 @@ Calculating allele frequencies... done.
 Total genotyping rate is 0.465332.
 1476918 variants and 1184 people pass filters and QC.
 Note: No phenotypes present.
---make-bed to /home/jennifer/ElasticNet/PCA/PCA_4/QC6a.bed +
-/home/jennifer/ElasticNet/PCA/PCA_4/QC6a.bim +
-/home/jennifer/ElasticNet/PCA/PCA_4/QC6a.fam ... done.
+--make-bed to /home/jennifer/ElasticNet/PCA/PCA_5/QC6a.bed +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC6a.bim +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC6a.fam ... done.
+
+#no missnp files, so we do not need to filter it again
+
+b)
+jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC6a --geno 0.01 --maf 0.5 --autosome --indep-pairwise 50 5 0.3 --recode  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC6b
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.log.
+Options in effect:
+  --autosome
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC6a
+  --geno 0.01
+  --indep-pairwise 50 5 0.3
+  --maf 0.5
+  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC6b
+  --recode
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1476918 variants loaded from .bim file.
+1184 people (589 males, 595 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 988 founders and 196 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.465332.
+1109444 variants removed due to missing genotype data (--geno).
+366978 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+496 variants and 1184 people pass filters and QC.
+Note: No phenotypes present.
+--recode ped to /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.ped +
+/home/jennifer/ElasticNet/PCA/PCA_5/QC6b.map ... done.
+Pruned 0 variants from chromosome 1, leaving 36.
+Pruned 0 variants from chromosome 2, leaving 42.
+Pruned 1 variant from chromosome 3, leaving 35.
+Pruned 0 variants from chromosome 4, leaving 33.
+Pruned 0 variants from chromosome 5, leaving 23.
+Pruned 0 variants from chromosome 6, leaving 34.
+Pruned 0 variants from chromosome 7, leaving 22.
+Pruned 0 variants from chromosome 8, leaving 23.
+Pruned 0 variants from chromosome 9, leaving 20.
+Pruned 0 variants from chromosome 10, leaving 43.
+Pruned 0 variants from chromosome 11, leaving 13.
+Pruned 1 variant from chromosome 12, leaving 19.
+Pruned 0 variants from chromosome 13, leaving 16.
+Pruned 0 variants from chromosome 14, leaving 22.
+Pruned 0 variants from chromosome 15, leaving 14.
+Pruned 0 variants from chromosome 16, leaving 19.
+Pruned 0 variants from chromosome 17, leaving 15.
+Pruned 0 variants from chromosome 18, leaving 16.
+Pruned 0 variants from chromosome 19, leaving 14.
+Pruned 0 variants from chromosome 20, leaving 20.
+Pruned 0 variants from chromosome 21, leaving 9.
+Pruned 0 variants from chromosome 22, leaving 6.
+Pruning complete.  2 of 496 variants removed.
+Marker lists written to /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.prune.in and
+/home/jennifer/ElasticNet/PCA/PCA_5/QC6b.prune.out .
+
+c) jennifer@wheelerlab1:~$ awk '{print $1,$2,$3,$4,$5,1}' /home/jennifer/ElasticNet/PCA/PCA_5/QC6a.fam > /home/jennifer/ElasticNet/PCA/PCA_5/QC6c.fam
+
+Step 7:
+a)jennifer@wheelerlab1:~$ perl /home/wheelerlab1/Data/GWAS_QC_scripts/make_par_file.pl /home/jennifer/ElasticNet/PCA/PCA_5/ 0 > /home/jennifer/ElasticNet/PCA/PCA_5/PCA.par
+
+Smartpca file
+genotypename: /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.ped
+snpname: /home/jennifer/ElasticNet/PCA/PCA_5/AC6b.map
+indivname: /home/jennifer/ElasticNet/PCA/PCA_5/AC6c.fam
+evecoutname: /home/jennifer/ElasticNet/PCA/PCA_5/QC7.evec
+evaloutname: /home/jennifer/ElasticNet/PCA/PCA_5/QC7.eval
+outliername: /home/jennifer/ElasticNet/PCA/PCA_5/QC7.outlier
+numoutevec: 10
+numoutlieriter: 0
+numoutlierevec: 2
+outliersigmathresh: 6
+## smartpca version: 13050
+norm used
+
+
+
 
