@@ -270,78 +270,115 @@ Note: No phenotypes present.
 
 #no missnp files, so we do not need to filter it again
 
-b)
-jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC6a --geno 0.01 --maf 0.5 --autosome --indep-pairwise 50 5 0.3 --recode  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC6b
+*** must filter out those with no genotype data 
+jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6a --keep /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/all_pop.txt --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d
 PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
 (C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.log.
+Logging to /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d.log.
 Options in effect:
-  --autosome
-  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC6a
-  --geno 0.01
-  --indep-pairwise 50 5 0.3
-  --maf 0.5
-  --out /home/jennifer/ElasticNet/PCA/PCA_5/QC6b
-  --recode
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6a
+  --keep /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/all_pop.txt
+  --make-bed
+  --out /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d
 
 64070 MB RAM detected; reserving 32035 MB for main workspace.
 1476918 variants loaded from .bim file.
 1184 people (589 males, 595 females) loaded from .fam.
+--keep: 763 people remaining.
 Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 988 founders and 196 nonfounders present.
+Before main variant filters, 654 founders and 109 nonfounders present.
 Calculating allele frequencies... done.
-Total genotyping rate is 0.465332.
-1109444 variants removed due to missing genotype data (--geno).
-366978 variants removed due to minor allele threshold(s)
-(--maf/--max-maf/--mac/--max-mac).
-496 variants and 1184 people pass filters and QC.
+Total genotyping rate in remaining samples is 0.488396.
+1476918 variants and 763 people pass filters and QC.
 Note: No phenotypes present.
---recode ped to /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.ped +
-/home/jennifer/ElasticNet/PCA/PCA_5/QC6b.map ... done.
-Pruned 0 variants from chromosome 1, leaving 36.
-Pruned 0 variants from chromosome 2, leaving 42.
-Pruned 1 variant from chromosome 3, leaving 35.
-Pruned 0 variants from chromosome 4, leaving 33.
-Pruned 0 variants from chromosome 5, leaving 23.
-Pruned 0 variants from chromosome 6, leaving 34.
-Pruned 0 variants from chromosome 7, leaving 22.
-Pruned 0 variants from chromosome 8, leaving 23.
-Pruned 0 variants from chromosome 9, leaving 20.
-Pruned 0 variants from chromosome 10, leaving 43.
-Pruned 0 variants from chromosome 11, leaving 13.
-Pruned 1 variant from chromosome 12, leaving 19.
-Pruned 0 variants from chromosome 13, leaving 16.
-Pruned 0 variants from chromosome 14, leaving 22.
-Pruned 0 variants from chromosome 15, leaving 14.
-Pruned 0 variants from chromosome 16, leaving 19.
-Pruned 0 variants from chromosome 17, leaving 15.
-Pruned 0 variants from chromosome 18, leaving 16.
-Pruned 0 variants from chromosome 19, leaving 14.
-Pruned 0 variants from chromosome 20, leaving 20.
-Pruned 0 variants from chromosome 21, leaving 9.
-Pruned 0 variants from chromosome 22, leaving 6.
-Pruning complete.  2 of 496 variants removed.
-Marker lists written to /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.prune.in and
-/home/jennifer/ElasticNet/PCA/PCA_5/QC6b.prune.out .
+--make-bed to /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d.bed +
+/home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d.bim +
+/home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d.fam ... done.
+  
+#created a file with only the pops we are looking at (CHB,GIH,JPT,MKK,MEX,YRI,andLWK) using population file: home/wheelerlab1/Data/Stranger_et_al_pop_eQTLs/HapMap3-genotypes/relationships_w_pops_121708.txt
+#used grep function to remove pops and then using cat file.txt to create final file
+#the rest the steps are the same except they were done in the directory /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5 after copying over the directory to a new location 
 
-c) jennifer@wheelerlab1:~$ awk '{print $1,$2,$3,$4,$5,1}' /home/jennifer/ElasticNet/PCA/PCA_5/QC6a.fam > /home/jennifer/ElasticNet/PCA/PCA_5/QC6c.fam
+
+b)
+jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d --geno 0.01 --maf 0.5 --autosome --indep-pairwise 50 5 0.3 --recode --out /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b
+PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b.log.
+Options in effect:
+  --autosome
+  --bfile /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d
+  --geno 0.01
+  --indep-pairwise 50 5 0.3
+  --maf 0.5
+  --out /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b
+  --recode
+
+64070 MB RAM detected; reserving 32035 MB for main workspace.
+1476918 variants loaded from .bim file.
+763 people (386 males, 377 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 654 founders and 109 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.488396.
+1114161 variants removed due to missing genotype data (--geno).
+362451 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+306 variants and 763 people pass filters and QC.
+Note: No phenotypes present.
+--recode ped to /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b.ped +
+/home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b.map ... done.
+Pruned 0 variants from chromosome 1, leaving 29.
+Pruned 0 variants from chromosome 2, leaving 29.
+Pruned 0 variants from chromosome 3, leaving 20.
+Pruned 0 variants from chromosome 4, leaving 25.
+Pruned 0 variants from chromosome 5, leaving 16.
+Pruned 0 variants from chromosome 6, leaving 19.
+Pruned 0 variants from chromosome 7, leaving 17.
+Pruned 0 variants from chromosome 8, leaving 11.
+Pruned 0 variants from chromosome 9, leaving 18.
+Pruned 0 variants from chromosome 10, leaving 10.
+Pruned 0 variants from chromosome 11, leaving 14.
+Pruned 0 variants from chromosome 12, leaving 16.
+Pruned 0 variants from chromosome 13, leaving 9.
+Pruned 0 variants from chromosome 14, leaving 8.
+Pruned 0 variants from chromosome 15, leaving 7.
+Pruned 0 variants from chromosome 16, leaving 12.
+Pruned 0 variants from chromosome 17, leaving 6.
+Pruned 0 variants from chromosome 18, leaving 11.
+Pruned 0 variants from chromosome 19, leaving 6.
+Pruned 0 variants from chromosome 20, leaving 10.
+Pruned 0 variants from chromosome 21, leaving 6.
+Pruned 0 variants from chromosome 22, leaving 7.
+Pruning complete.  0 of 306 variants removed.
+Marker lists written to /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b.prune.in
+and /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b.prune.out .
+
+c) jennifer@wheelerlab1:~$ awk '{print $1,$2,$3,$4,$5,1}' /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d.fam  /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d.fam > /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6c.fam
 
 Step 7:
-a)jennifer@wheelerlab1:~$ perl /home/wheelerlab1/Data/GWAS_QC_scripts/make_par_file.pl /home/jennifer/ElasticNet/PCA/PCA_5/ 0 > /home/jennifer/ElasticNet/PCA/PCA_5/PCA.par
+a)perl /home/wheelerlab1/Data/GWAS_QC_scripts/make_par_file.pl /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/ 0 > /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
 
-Smartpca file
-genotypename: /home/jennifer/ElasticNet/PCA/PCA_5/QC6b.ped
-snpname: /home/jennifer/ElasticNet/PCA/PCA_5/AC6b.map
-indivname: /home/jennifer/ElasticNet/PCA/PCA_5/AC6c.fam
-evecoutname: /home/jennifer/ElasticNet/PCA/PCA_5/QC7.evec
-evaloutname: /home/jennifer/ElasticNet/PCA/PCA_5/QC7.eval
-outliername: /home/jennifer/ElasticNet/PCA/PCA_5/QC7.outlier
+jennifer@wheelerlab1:~$ nano /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+
+jennifer@wheelerlab1:~$ smartpca -p /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+
+parameter file: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+### THE INPUT PARAMETERS
+##PARAMETER NAME: VALUE
+genotypename: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b.ped
+snpname: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6b.map
+indivname: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6c.fam
+evecoutname: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC7.evec
+evaloutname: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC7.eval
+outliername: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC7.outlier
 numoutevec: 10
 numoutlieriter: 0
 numoutlierevec: 2
 outliersigmathresh: 6
 ## smartpca version: 13050
 norm used
+
 
 
 
