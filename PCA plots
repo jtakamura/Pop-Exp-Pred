@@ -1,0 +1,33 @@
+library(dplyr)
+library(ggplot2)
+all.pops <- read.table("/home/jennifer/ElasticNet/PCA/Original/all_pop.txt") %>% select (V1,V2,V7)
+colnames(all.pops) <- c("FID", "IID","population")
+hapmappopinfo <- read.table("/home/wheelerlab1/Data/HAPMAP3_hg19/pop_HM3_hg19_forPCA.txt") %>% select (V1,V3)
+colnames(hapmappopinfo) <- c("pop","IID")
+popkey <- read.table("/home/wheelerlab1/Data/Stranger_et_al_pop_eQTLs/HapMap3-genotypes/relationships_w_pops_121708.txt")  %>% select (V1,V2,V7)
+popkey = popkey[-1,]
+colnames(popkey) <- c("FID","IID","population")
+fam <- read.table("/home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6c.fam") %>% select (V1,V2)
+colnames(fam) <- c("FID","IID")
+popinfo <- left_join(fam,all.pops,by="IID")
+popinfo <- mutate(popinfo, population=ifelse(is.na(population),'GWAS', as.character(population)))
+table(popinfo$pop)
+#CHB GIH JPT LWK MEX MKK YRI 
+#168 176 172 180 154 342 334 
+
+
+pcs <- read.table("/home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC7.evec",skip=1)
+pcdf <- data.frame(popinfo, pcs[,2:11]) %>% rename (PC1=V2,PC2=V3,PC3=V4,PC4=V5,PC5=V6,PC6=V7,PC7=V8,PC8=V9,PC9=V10,PC10=V11)
+gwas <- filter(pcdf,population=='GWAS')
+hm3 <- filter(pcdf, grepl('NA',IID))
+eval <- scan('/home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC7.eval')[1:10]
+round(eval/sum(eval),3)
+#[1] 0.566 0.108 0.058 0.052 0.038 0.037 0.036 0.035 0.035 0.035
+ggplot() + geom_point(data=gwas,aes(x=PC1,y=PC2,col=population))+geom_point(data = hm3,aes(x=PC1,y=PC2,col=population))+theme_bw() +scale_colour_brewer(palette ="Set1") + scale_shape_manual(values = 0:length(unique(gwas$populations)))
+#saved under PCA1 #Shape_scale_manual allows for more than one color to be plotted 
+ggplot() + geom_point(data=gwas,aes(x=PC1,y=PC3,col=population))+geom_point(data=hm3,aes(x=PC1,y=PC3,col=population))+theme_bw() + scale_colour_brewer(palette = "Set1") + scale_shape_manual(values = 0:length(unique(gwas$populations)))
+#saved under PCA2
+ggplot() + geom_point(data=gwas,aes(x=PC2,y=PC3,col=population))+geom_point(data=hm3,aes(x=PC2,y=PC3,col=population))+theme_bw()+scale_colour_brewer(palette = "Set1") + scale_shape_manual(values = 0:length(unique(gwas$populations)))
+#saved under PCA3
+ggplot() + geom_point(data=gwas,aes(x=PC1,y=PC2,col=population))+geom_point(data=hm3,aes(x=PC1,y=PC2,col=population))+theme_bw() + geom_vline(xintercept = c(uPC1,lPC1))+geom_hline(yintercept = uPC2,lPC2) + scale_shape_manual(values = 0:length(unique(gwas$populations)))
+#saved under PCA4
