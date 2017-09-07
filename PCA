@@ -97,6 +97,9 @@ Note: No phenotypes present.
 26	rs2853510	0	15925	G	A
 26	rs2854125	0	16149	T	C
 
+#used autosome in order to get rid of any mitochondrial data that may skew results
+#only have data for chromosome 1-22 after using autosome function
+
 Step 3: 
 jennifer@wheelerlab1:~/ElasticNet/PCA/PCA_5$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a --missing --out /home/jennifer/ElasticNet/PCA/PCA_5/QC3
 PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
@@ -268,7 +271,7 @@ Note: No phenotypes present.
 /home/jennifer/ElasticNet/PCA/PCA_5/QC6a.bim +
 /home/jennifer/ElasticNet/PCA/PCA_5/QC6a.fam ... done.
 
-#no missnp files, so we do not need to filter it again
+#no missnp files were created, so we do not need to filter it again
 
 *** must filter out those with no genotype data 
 jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6a --keep /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/all_pop.txt --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/QC6d
@@ -297,7 +300,7 @@ Note: No phenotypes present.
   
 #created a file with only the pops we are looking at (CHB,GIH,JPT,MKK,MEX,YRI,andLWK) using population file: home/wheelerlab1/Data/Stranger_et_al_pop_eQTLs/HapMap3-genotypes/relationships_w_pops_121708.txt
 #used grep function to remove pops and then using cat file.txt to create final file
-#the rest the steps are the same except they were done in the directory /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5 after copying over the directory to a new location 
+#the rest the steps are the same except they were done in the directory /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5 after copying over the directory to a new location and using the new files just created
 
 
 b)
@@ -358,10 +361,13 @@ c) jennifer@wheelerlab1:~$ awk '{print $1,$2,$3,$4,$5,1}' /home/jennifer/Elastic
 
 Step 7:
 a)perl /home/wheelerlab1/Data/GWAS_QC_scripts/make_par_file.pl /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/ 0 > /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+#need to copy over par file template because that is what smartpca uses
 
-jennifer@wheelerlab1:~$ nano /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+b)jennifer@wheelerlab1:~$ nano /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+#edit the par file and use the appropriate ped,map,and fam file
 
-jennifer@wheelerlab1:~$ smartpca -p /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+c)jennifer@wheelerlab1:~$ smartpca -p /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
+#run smartpca - should create an evec, eval, and outlier file
 
 parameter file: /home/jennifer/ElasticNet/PCA/PCA_6/PCA_5/PCA.par
 ### THE INPUT PARAMETERS
