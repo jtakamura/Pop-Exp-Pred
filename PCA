@@ -169,29 +169,6 @@ Pruning complete.  962598 of 1330072 variants removed.
 Marker lists written to /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in and
 /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.out .
 
-b)jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a -extract /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in --genome -out /home/jennifer/ElasticNet/PCA/PCA_5QC5b
-PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
-(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to /home/jennifer/ElasticNet/PCA/PCA_5QC5b.log.
-Options in effect:
-  --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a
-  --extract /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in
-  --genome
-  --out /home/jennifer/ElasticNet/PCA/PCA_5QC5b
-
-64070 MB RAM detected; reserving 32035 MB for main workspace.
-1330072 variants loaded from .bim file.
-1184 people (589 males, 595 females) loaded from .fam.
---extract: 367474 variants remaining.
-Using up to 11 threads (change this with --threads).
-Before main variant filters, 988 founders and 196 nonfounders present.
-Calculating allele frequencies... done.
-Total genotyping rate is 0.998226.
-367474 variants and 1184 people pass filters and QC.
-Note: No phenotypes present.
-IBD calculations complete.  
-Finished writing /home/jennifer/ElasticNet/PCA/PCA_5QC5b.genome .
-
 b)jennifer@wheelerlab1:~$ plink --bfile /home/jennifer/ElasticNet/PCA/PCA_5/QC2a --extract /home/jennifer/ElasticNet/PCA/PCA_5/QC5a.prune.in --make-bed --out /home/jennifer/ElasticNet/PCA/PCA_5/QC5b1
 PLINK v1.90b4.3 64-bit (9 May 2017)            www.cog-genomics.org/plink/1.9/
 (C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
